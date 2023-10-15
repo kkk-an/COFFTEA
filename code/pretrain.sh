@@ -1,6 +1,6 @@
 DATASET="fn1.7"
 DATA_FILE="fn1.7/in_batch/with_exemplars"
-DATA_DIR="data2023/$DATA_FILE"
+DATA_DIR="data/$DATA_FILE"
 
 TRAIN_MODE="contrastive_learning"
 TRAIN_DATA_MODE="wo_lexical_filter"

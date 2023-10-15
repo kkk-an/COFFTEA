@@ -1,28 +1,29 @@
 # COFFTEA
-Code for the paper "Coarse-to-Fine Dual Encoders are Better Frame Identification Learners"
+Code for EMNLP2023 paper "Coarse-to-Fine Dual Encoders are Better Frame Identification Learners"
 
 ## Data Preparation
 You can prepare data for *COFFTEA* from scratch, or can directly download from [link]().
-Firstly, following [Open-sesame](https://github.com/swabhs/open-sesame) to handle data in the XML format specified under [FrameNet](https://framenet.icsi.berkeley.edu/framenet_data), and get processed *CONLL* files, including the spilt of train/eval/test.
 
+Firstly, follow [Open-sesame](https://github.com/swabhs/open-sesame) to handle data in the XML format specified under [FrameNet](https://framenet.icsi.berkeley.edu/framenet_data), and get processed *CONLL* files, including the spilt of train/eval/test.
 
-Then, run the python code in *process_data* directory to construct the traning data. 
+Then, run the python code in *process_data* directory to construct the dataset we used: 
+
 **Note: Please specify FrameNet VERSION in global_config.json**
-- extract frame definitions,lexical unit definitions and frame relations.
+- Extract frame definitions,lexical unit definitions and frame relations.
 ```
 python process_data/extra_definition.py
 python process_data/frame_relation.py
 ```
-- construct **In-batch Learning** dataset.
+- Construct **In-batch Learning** dataset.
 ```
 python process_data/in-batch.py
 ```
-- construct **In-candidate Learning** dataset，pad_model should come from ["random", "lu", "lu+random", "lu+sib+random"].
+- Construct **In-candidate Learning** dataset，pad_model comes from ["random", "lu", "lu+random", "lu+sib+random"].
 ```
 python process_data/in-candidate.py  {pad_mode} 
 ```
 
-For example, you data directory will be same as the following:
+For example, your data directory will be same as the following:
 ```
 .
 ├── fn1.7
@@ -84,10 +85,10 @@ For example, you data directory will be same as the following:
             ├── fn1.7.test.syntaxnet.conll
             └── fn1.7.test.syntaxnet.conll.sents
 ```
-Or you can download ours from [link] and place them into the coresponding directory.
+Or you can download ours and place them into the coresponding directory.
 
 ## Training
-**Note: the TRAIN_MODE and TRAIN_DATA_MODE are connected **
+**Note: the TRAIN_MODE and TRAIN_DATA_MODE are connected, and you can choose the TEST_DATA_MODE to determine the evaluation setting on lexical filtering or without lexical filtering.**
 ### In-batch Learning
 To effectively facilitate one target with all frames and update frame representations simultaneously, we employ **In-batch Learning** to realize this.
 
@@ -99,9 +100,12 @@ To further distinguish frames that are more likely to be confused with one anoth
 Please run `bash code/train_candidate.sh`.
 
 ### Coarse-to-fine Two-stage Learning
-As 
+As our paper claimed, there is a trade-off between **in-batch learning** $L_B$ and **in-candidate learning** $L_C$, the former is better on without lexical filtering and the latter excels at lexical filtering. We train *COFFTEA* with $L_B$ on exemplars and then train *COFFTEA* with $L_C$  with train split, which is equivalent to performing coarse-grained pretraining on a large-scale corpus and then fine-tuning on a smaller dataset for domain adaptation at a finer granularity.
 
-## Contact
+firstly, run `code/pretrain.sh` and then replace the `pretrain_model_path` with the pretraining model path and run `code/train_candidate_from_pretrain.sh`.
+
+
+## Contact Us
 For any questions or issues, please feel free to contact `ankaikai@stu.pku.edu.cn`.
 
 
