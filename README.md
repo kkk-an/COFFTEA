@@ -1,12 +1,18 @@
 # COFFTEA
 Code for EMNLP2023 paper "Coarse-to-Fine Dual Encoders are Better Frame Identification Learners"
 
+Paper link: [Coarse-to-Fine Dual Encoders are Better Frame Identification Learners]()
+
+Overview:
+![image.pdf](method.pdf)
+
+
 ## Data Preparation
-You can prepare data for *COFFTEA* from scratch, or can directly download from [link]().
+You can prepare data for *COFFTEA* from scratch, or can directly download from [link](https://drive.google.com/drive/folders/1zTKW3fhhOT755og5BTTGoLNVSHgDQZh6?usp=sharing) and place into the coresponding directory.
 
 Firstly, follow [Open-sesame](https://github.com/swabhs/open-sesame) to handle data in the XML format specified under [FrameNet](https://framenet.icsi.berkeley.edu/framenet_data), and get processed *CONLL* files, including the spilt of train/eval/test.
 
-Then, run the python code in *process_data* directory to construct the dataset we used: 
+Then, run the python code in `process_data` directory to construct the dataset we used: 
 
 **Note: Please specify FrameNet VERSION in global_config.json**
 - Extract frame definitions,lexical unit definitions and frame relations.
@@ -23,7 +29,7 @@ python process_data/in-batch.py
 python process_data/in-candidate.py  {pad_mode} 
 ```
 
-For example, your data directory will be same as the following:
+For example, your `data` directory will be same as the following:
 ```
 .
 ├── fn1.7
@@ -85,7 +91,6 @@ For example, your data directory will be same as the following:
             ├── fn1.7.test.syntaxnet.conll
             └── fn1.7.test.syntaxnet.conll.sents
 ```
-Or you can download ours and place them into the coresponding directory.
 
 ## Training
 **Note: the TRAIN_MODE and TRAIN_DATA_MODE are connected, and you can choose the TEST_DATA_MODE to determine the evaluation setting on lexical filtering or without lexical filtering.**
@@ -109,4 +114,5 @@ firstly, run `code/pretrain.sh` and then replace the `pretrain_model_path` with 
 For any questions or issues, please feel free to contact `ankaikai@stu.pku.edu.cn`.
 
 
-Thanks for [FIDO](https://github.com/tyjiangU/fido).
+---
+We sincerely thank the open-source projects [FIDO](https://github.com/tyjiangU/fido) and [Open-sesame](https://github.com/swabhs/open-sesame) for their invaluable contributions in helping us complete our work.
