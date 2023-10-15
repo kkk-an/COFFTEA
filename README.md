@@ -3,10 +3,6 @@ Code for EMNLP2023 paper "Coarse-to-Fine Dual Encoders are Better Frame Identifi
 
 Paper link: [Coarse-to-Fine Dual Encoders are Better Frame Identification Learners]()
 
-Overview:
-![image](https://github.com/kkk-an/COFFTEA/blob/main/method.pdf)
-
-
 ## Data Preparation
 You can prepare data for *COFFTEA* from scratch, or can directly download from [link](https://drive.google.com/drive/folders/1zTKW3fhhOT755og5BTTGoLNVSHgDQZh6?usp=sharing) and place into the coresponding directory.
 
