@@ -6,7 +6,6 @@ import json
 import readline
 import sys
 import os
-from py import process
 sys.path.append(".")
 from globalconfig import (TRAIN_FTE, DEV_CONLL, TEST_CONLL,
                                 FRAME_DEF_DIR, LU_DEF_DIR, 

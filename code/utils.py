@@ -1,6 +1,5 @@
 import os
 import csv
-from sqlalchemy import true
 from tqdm import tqdm
 from typing import List
 from transformers import PreTrainedTokenizer

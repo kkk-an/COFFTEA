@@ -1,6 +1,5 @@
 import logging
 import os
-from sklearn import datasets
 import torch
 from utils import *
 from torch.utils.data import TensorDataset

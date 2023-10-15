@@ -5,8 +5,6 @@ import torch.nn.functional as F
 from transformers import BertPreTrainedModel, BertModel, BertConfig
 import allennlp.modules.span_extractors.max_pooling_span_extractor as max_pooling_span_extractor
 from allennlp.nn.util import get_mask_from_sequence_lengths, masked_log_softmax
-import dgl
-import dgl.function as fn
 import torch
 
 

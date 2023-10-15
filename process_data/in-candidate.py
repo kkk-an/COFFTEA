@@ -10,7 +10,6 @@ import json
 import sys
 sys.path.append('.')
 import os
-from py import process
 from globalconfig import (TRAIN_FTE, DEV_CONLL, TEST_CONLL,
                                 FRAME_DEF_DIR, LU_DEF_DIR,
                                 VERSION,
