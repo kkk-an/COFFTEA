@@ -1,0 +1,6 @@
+{
+    "version": 1.7,
+    "data_directory": "data/raw_data/",
+    "argid_lr": 0.0005,
+    "debug_mode": false
+}
